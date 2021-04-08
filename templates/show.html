@@ -1,45 +1,16 @@
 <!DOCTYPE html>
 <html id="body" lang="en">
+{% extends 'base.html' %}
 
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>plshelp | info</title>
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<script type="text/javascript" src="{{ url_for('static', filename='js/main.js') }}" defer></script>
-	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/body.css') }}">
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
-		integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-	<script type="text/javascript">
-		$(document).ready(function() {
-			if (localStorage.getItem("logs") === null) {
-				var logs = [];
-			} else {
-				var logs = JSON.parse(localStorage.getItem("logs"));
-			}
-			if (!logs.includes("{{paste_url}}")) {
-				logs.push("{{paste_url}}")
-				localStorage.setItem("logs", JSON.stringify(logs));
-			}
-		});
-	</script>
-	<style>
-		h2 {
-			font-size: 20px;
-		}
 
-		.body-dark body {
-			background-color: #2f3136;
-		}
+{% block title %} 
 
-		.title-dark {
-			background-color: #2f3136 !important;
-		}
-	</style>
-</head>
+info
 
-<body>
+{% endblock %}
+
+{% block content %} 
+
 	<div id="body">
 		<nav id="navbar" class="navbar navbar-expand-lg navbar-light bg-light">
 			<div class="container-fluid">
@@ -119,7 +90,6 @@
 					<div id="info4" class="subtitle-light"><strong>Needs newer Java:</strong> {{needs_newer_java}}</div>
 				</div>
 			</div>
-		{% block body %}
 		{% if sbw_wrongshop %}
 		<div id="card5" class="card w-100 mt-4">
 			<div class="card-body shadow errors-light">
@@ -129,16 +99,8 @@
 			</div>
 		</div>
 		{% endif %}
-		{% endblock %}
 		</div>
 		<br></br>
-		<footer id="footer" class="footer-light">
-			<p class="mobile-optimize mt-2">
-				Made with ❤️ by <a href="https://github.com/zlataovce">zlataovce</a> and the <a href="https://screamingsandals.org/discord">ScreamingSandals community</a>
-			</p>
-		</footer>
 	</div>
 
-</body>
-
-</html>
+{% endblock %}
